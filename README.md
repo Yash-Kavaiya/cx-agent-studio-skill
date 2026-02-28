@@ -6,6 +6,9 @@ A comprehensive OpenClaw skill for navigating, building, and optimizing Google C
 This skill is officially published and available to install via the ClawHub Registry:
 **[View on ClawHub](https://clawhub.ai/Yash-Kavaiya/cx-agent-studio)**
 
+**GitHub Repository:**
+[https://github.com/Yash-Kavaiya/cx-agent-studio-skill](https://github.com/Yash-Kavaiya/cx-agent-studio-skill)
+
 ### Installation (ClawHub)
 To install this skill directly using OpenClaw, run:
 ```bash
