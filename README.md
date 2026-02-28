@@ -4,12 +4,19 @@ A comprehensive OpenClaw skill for navigating, building, and optimizing Google C
 
 ## 🚀 Published Skill
 This skill is officially published and available to install via the ClawHub Registry:
-**[View on Skills.sh](https://skills.sh/skills/cx-agent-studio)**
+**[View on ClawHub](https://clawhub.ai/Yash-Kavaiya/cx-agent-studio)**
 
-### Installation
+### Installation (ClawHub)
 To install this skill directly using OpenClaw, run:
 ```bash
 npx clawhub install cx-agent-studio
+```
+
+### Installation (Skills.sh / Vercel Labs)
+Because this is an open-source GitHub repository, it is also fully compatible with the `skills.sh` ecosystem! 
+You can install it into Claude Code, Cursor, OpenCode, or any other supported agent by running:
+```bash
+npx skills add Yash-Kavaiya/cx-agent-studio-skill
 ```
 
 ## Overview
