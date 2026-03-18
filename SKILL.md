@@ -1,49 +1,123 @@
 ---
 name: cx-agent-studio
-description: Guide and instructions for using Google Customer Experience Agent Studio (CX Agent Studio). Use when creating conversational agents, writing or structuring instructions with XML tags, setting up few-shot examples, or building evaluation test cases (Golden or Scenario).
+description: >
+  Guide and expert reference for Google Cloud CX Agent Studio (Gemini Enterprise for CX).
+  Use when the user asks about: building conversational agents, Dialogflow CX, CX Agent Studio,
+  agent instructions, XML prompt formatting, few-shot examples, global instructions,
+  Python tools, OpenAPI tools, client function tools, MCP tools, data store tools,
+  tool chaining, wrapping APIs, context engineering, session variables, variable types,
+  callbacks (before_model_callback, after_model_callback, before_tool_callback,
+  after_tool_callback, before_agent_callback, after_agent_callback), custom payloads,
+  guardrails, prompt guard, blocklist, safety levels, evaluation, golden test cases,
+  scenario test cases, evaluation metrics, hallucination detection, tool correctness,
+  best practices, session handling, partial responses, deterministic greetings,
+  agent escalation, voice audio patterns, error handling, dynamic prompts,
+  multi-agent architecture, root agent, sub-agent, agent routing, agent description,
+  agent settings, CES API, REST API, RPC API, client libraries, authentication,
+  ADC credentials, service account, x-ces-session-context, ces_requests, ToolContext,
+  CallbackContext, LlmRequest, LlmResponse, Content, Part, FunctionCall, or
+  any request to build, debug, optimize, or integrate with CX Agent Studio agents.
 ---
 
 # CX Agent Studio
 
-Customer Experience Agent Studio (CX Agent Studio) is a minimal code conversational agent builder built on the Agent Development Kit (ADK), representing the evolution of Dialogflow CX.
+Customer Experience Agent Studio (CX Agent Studio) is a minimal-code conversational agent builder built on the Agent Development Kit (ADK), representing the evolution of Dialogflow CX.
+
+**Console:** [ces.cloud.google.com](https://ces.cloud.google.com)
 
 ## Core Capabilities
 
-- **AI-Augmented Building**: Generate agents using Gemini with a 1-2 sentence goal.
-- **Bi-directional Streaming**: Ultra-low latency voice interactions.
-- **Asynchronous Tool Calling**: Maintains natural conversation flow during backend calls.
+- **AI-Augmented Building** — Generate agents from a 1–2 sentence goal using Gemini
+- **Bi-directional Streaming** — Ultra-low latency voice interactions
+- **Asynchronous Tool Calling** — Maintains natural conversation flow during backend calls
+- **Multi-Agent Architecture** — Root and sub-agents for modular, scalable design
+- **Evaluations** — Golden and scenario-based automated testing
+
+---
 
 ## Quick Actions
 
-### 1. Generating an Agent with AI
-To generate an agent automatically:
-- Provide a clear 1-2 sentence goal.
-- Optionally provide up to 5 knowledge documents (under 8MB total) like FAQs or tool catalogs.
-*Note: Only works for the root agent and empty agents.*
+### 1. Build an Agent Application
+- Open [ces.cloud.google.com](https://ces.cloud.google.com) → **Create agent**
+- Add instructions, tools, variables, guardrails, and callbacks
+- **Read** `references/agents.md` for full agent settings and architecture
 
-### 2. Architecture & Design
-- **Agents**: Root (steering) agents orchestrate tasks and delegate to sub-agents. Read `references/agents.md`.
-- **Flows**: Integrate legacy Dialogflow CX flows for deterministic business logic (auth, sequential validation). Read `references/flows.md`.
-- **Variables**: Store and retrieve runtime conversation data. Read `references/variables.md`.
+### 2. Write Agent Instructions
+- Use natural language; click **Restructure instructions** to format as XML
+- Reference syntax: `{variable_name}`, `{@TOOL: tool_name}`, `{@AGENT: Agent Name}`
+- **Read** `references/instructions.md` for XML format, few-shot examples, and formatting best practices
 
-### 3. Writing Agent Instructions
-Agent instructions guide the model's behavior, persona, and tool/agent usage.
-- **Syntax References**:
-  - Variables: `{variable_name}`
-  - Tools: `{@TOOL: tool_name}`
-  - Sub-Agents: `{@AGENT: Agent Name}`
-- **For complex instructions or recommended XML formatting**, read: `references/instructions.md`
-- **Best Practices**: Start simple, use specific/structured instructions, flat parameter structures. Read `references/best-practices.md`.
+### 3. Add Tools
+- Python code tools, OpenAPI, Client function, MCP, Data store, Google Search, and more
+- **Read** `references/tools.md` for all tool types, `context` object, `ces_requests`, and code samples
 
-### 4. Tools & Callbacks
-- **Tools**: Connect your agent to external systems. Wrap complex APIs in Python tools to reduce context overhead. Read `references/tools.md`.
-- **Callbacks**: Advanced Python hooks (`before_agent_callback`, `after_model_callback`, etc.) to control execution, validate states, or inject custom JSON payloads. Read `references/callbacks.md`.
+### 4. Use Variables
+- Store/retrieve runtime data across turns
+- Updated by tools (`context.state`) or callbacks (`callback_context.variables`)
+- **Read** `references/variables.md` for types, updating patterns, and `x-ces-session-context`
 
-### 5. Guardrails & Safety
-- **Guardrails**: Protect against prompt attacks and enforce Responsible AI policies. Read `references/guardrails.md`.
+### 5. Add Guardrails
+- Prompt guard, blocklist, safety levels, and custom code rules
+- **Read** `references/guardrails.md` for configuration options and code-based rule examples
 
-### 6. Agent Evaluation
-Evaluation ensures agent performance via automated test cases.
-- **Scenario Test Cases**: AI-generated simulated user conversations based on a user goal.
-- **Golden Test Cases**: Specific, ideal conversation paths for regression testing.
-- **For detailed evaluation metrics, personas, and test case creation**, read: `references/evaluation.md`
+### 6. Add Callbacks
+- Python hooks at 6 execution points in the conversation lifecycle
+- Custom payloads, deterministic responses, error handling, audit logging
+- **Read** `references/callbacks.md` for all callback types with code samples
+
+### 7. Evaluate Agent Quality
+- Golden test cases (regression) and scenario test cases (AI-simulated users)
+- **Read** `references/evaluation.md` for metrics, personas, and REST API
+
+### 8. Apply Best Practices
+- **Read** `references/best-practices.md` for patterns on session handling, tool chaining, voice/audio, UI integration, and error handling
+
+---
+
+## Reference Files
+
+| File | Read When |
+|------|-----------|
+| `references/agents.md` | User asks about agent architecture, multi-agent setup, agent settings, routing, sub-agents |
+| `references/instructions.md` | User asks about writing instructions, XML format, few-shot examples, global instructions |
+| `references/tools.md` | User asks about any tool type, Python tools, OpenAPI, `context` object, `ces_requests`, tool chaining |
+| `references/variables.md` | User asks about variables, session state, `context.state`, `callback_context.variables`, dynamic prompts |
+| `references/guardrails.md` | User asks about guardrails, prompt guard, blocklist, safety, custom rules |
+| `references/callbacks.md` | User asks about any callback type, custom payloads, deterministic responses, session patterns |
+| `references/best-practices.md` | User asks about best practices, patterns, session handling, voice/audio, UI, error handling |
+| `references/evaluation.md` | User asks about testing, evaluations, golden tests, scenario tests, metrics, personas |
+
+---
+
+## Callback Execution Flow
+
+```
+User message arrives
+  │
+  ├─ before_agent_callback    ← Setup / validation / skip agent
+  │
+  ├─ before_model_callback    ← Input guardrails / context injection / skip LLM
+  │    │
+  │    ├─ [LLM processes]
+  │    │
+  │    └─ after_model_callback ← Output formatting / PII redaction / payloads
+  │
+  ├─ before_tool_callback     ← Validate args / mock response / rate limit
+  │    │
+  │    ├─ [Tool executes]
+  │    │
+  │    └─ after_tool_callback  ← Transform response / save to variables / audit
+  │
+  └─ after_agent_callback     ← Cleanup / counters / override response
+```
+
+## Important Notes
+
+- Always write instructions in **English** for highest quality
+- Agent descriptions are used for routing — write them specifically
+- Use `context.state` in Python tools and `callback_context.variables` in callbacks (same underlying state)
+- Variables cannot be updated by the agent directly — only by tools and callbacks
+- Custom payloads (JSON) are **not visible to the LLM** — only in the final API response
+- Callback function names are **fixed** — the runtime finds them by exact name
+- Multiple callbacks of the same type execute in definition order
+- `partial = True` on `LlmResponse` forces the agent to continue processing after that response
